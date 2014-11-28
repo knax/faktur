@@ -36,6 +36,8 @@ Route::group(['prefix' => 'kasir'], function () {
 Route::group(['prefix' => 'marketing'], function () {
     Route::get('jual', ['as' => 'marketing.jual.form', 'uses' => 'MarketingController@jualBarangForm']);
     Route::post('jual', ['as' => 'marketing.jual', 'uses' => 'MarketingController@jualBarang']);
+    Route::get('{id}/print/raw', ['as' => 'marketing.print.raw', 'uses' => 'MarketingController@printRaw']);
+    Route::get('{id}/print', ['as' => 'marketing.print', 'uses' => 'MarketingController@printFaktur']);
 });
 
 Route::group(['prefix' => 'pelanggan'], function () {

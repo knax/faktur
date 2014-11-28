@@ -36,16 +36,16 @@ class Penjualan extends Model
 
     public function pelanggan()
     {
-        return $this->belongsTo('Pelanggan', 'id_pelanggan', 'id')->first();
+        return $this->belongsTo('Pelanggan', 'id_pelanggan', 'id');
     }
 
     public function totalHarga()
     {
         $totalHarga = 0;
-        foreach ($this->listBarangTerjual() as $penjualanDetail) {
-            $totalHarga += $penjualanDetail->unit * $penjualanDetail->harga;
-        }
 
+        foreach($this->detail as $detail) {
+            $totalHarga += $detail->harga * $detail->unit;
+        }
         return $totalHarga;
     }
 

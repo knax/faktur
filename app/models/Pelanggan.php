@@ -37,6 +37,13 @@ class Pelanggan extends Model
         return $this->hasMany('PembayaranPiutang', 'id_pelanggan', 'id');
     }
 
+    public function alamatFormatted()
+    {
+        $alamat = str_split($this->alamat, 30);
+
+        return $alamat;
+    }
+
     public function piutang($tanggal = null)
     {
         if($tanggal == null) {
